@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intech Group - Template</title>
+    <style>
+        /* CSS Reset & Cơ bản */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #fff;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        ul {
+            list-style: none;
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #0b5aa6; /* Màu xanh Intech */
+        }
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+        .nav-links a {
+            font-weight: bold;
+            font-size: 14px;
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover {
+            color: #d32f2f;
+        }
+        .menu-toggle {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #333;
+        }
+
+        /* Hero Banner */
+        .hero {
+            /* Thay link ảnh dưới đây bằng ảnh thực tế của bạn */
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://via.placeholder.com/1920x600?text=Intech+Banner') no-repeat center center/cover;
+            color: #fff;
+            text-align: center;
+            padding: 100px 20px;
+        }
+        .hero h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+        .hero p {
+            font-size: 18px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 50px;
+            flex-wrap: wrap;
+        }
+        .stat-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 8px;
+            min-width: 150px;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        .stat-item h3 {
+            font-size: 32px;
+            color: #ffeb3b;
+            margin-bottom: 5px;
+        }
+
+        /* Các Section dùng chung */
+        .section {
+            padding: 60px 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 28px;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+            color: #0b5aa6;
+            position: relative;
+        }
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: #d32f2f;
+            margin: 10px auto 0;
+        }
+
+        /* Lưới 4 cột (Lĩnh vực, Dịch vụ) */
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .card {
+            background: #f9f9f9;
+            padding: 30px 20px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid #eee;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+            border-bottom: 3px solid #0b5aa6;
+        }
+        .card h3 {
+            margin-bottom: 15px;
+            color: #333;
+        }
+        .card p {
+            font-size: 14px;
+            color: #666;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1a1a1a;
+            color: #ccc;
+            padding: 50px 5% 20px;
+        }
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto 30px;
+        }
+        .footer-col h4 {
+            color: #fff;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+        .footer-col p {
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+            font-size: 14px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: #fff;
+                box-shadow: 0 5px 5px rgba(0,0,0,0.1);
+                padding: 20px 5%;
+            }
+            .nav-links.active {
+                display: flex;
+            }
+            .menu-toggle {
+                display: block;
+            }
+            .hero h1 {
+                font-size: 28px;
+            }
+            .stats {
+                gap: 15px;
+            }
+            .stat-item {
+                flex: 1 1 40%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <a href="#" class="logo">INTECH GROUP</a>
+            <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+            <nav class="nav-links" id="navLinks">
+                <a href="#">Thông Tin Tập Đoàn</a>
+                <a href="#">Lĩnh Vực Hoạt Động</a>
+                <a href="#">Giải Pháp 4.0</a>
+                <a href="#">Dịch Vụ</a>
+                <a href="#">Tin Tức & Sự Kiện</a>
+                <a href="#">Liên Hệ</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <h1>Kiến tạo tương lai</h1>
+        <p>Intech Group kinh doanh bằng cách phụng sự xã hội thông qua những sản phẩm và dịch vụ tốt lành của mình.</p>
+        
+        <div class="stats">
+            <div class="stat-item">
+                <h3>15+</h3>
+                <p>Năm Kinh Nghiệm</p>
+            </div>
+            <div class="stat-item">
+                <h3>500+</h3>
+                <p>Nhân Sự</p>
+            </div>
+            <div class="stat-item">
+                <h3>05+</h3>
+                <p>Công Ty Thành Viên</p>
+            </div>
+            <div class="stat-item">
+                <h3>03+</h3>
+                <p>Nhà Máy Sản Xuất</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2 class="section-title">Lĩnh Vực Hoạt Động</h2>
+        <div class="grid-4">
+            <div class="card">
+                <h3>Cơ Khí</h3>
+                <p>Gia công chi tiết máy, gia công đồ gá, gia công khuôn, cắt laser, tiện và phay CNC chất lượng cao.</p>
+            </div>
+            <div class="card">
+                <h3>Tự Động Hóa</h3>
+                <p>Cung cấp các giải pháp tự động hóa nhà máy, tối ưu hóa quy trình sản xuất thông minh.</p>
+            </div>
+            <div class="card">
+                <h3>Công Nghệ</h3>
+                <p>Đưa ứng dụng công nghệ số, phần mềm quản lý vào các hệ thống máy móc thiết bị hiện đại.</p>
+            </div>
+            <div class="card">
+                <h3>Năng Lượng</h3>
+                <p>Cung cấp các giải pháp về năng lượng tái tạo, điện năng lượng mặt trời bảo vệ môi trường.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" style="background-color: #f4f7f6;">
+        <h2 class="section-title">Giải Pháp Nổi Bật</h2>
+        <div class="grid-4">
+            <div class="card">
+                <h3>Hệ thống phân loại Cross belt</h3>
+                <p>Giải pháp tự động hóa phân loại bưu kiện chính xác, tốc độ cao dành cho ngành Logistics.</p>
+            </div>
+            <div class="card">
+                <h3>Trạm Robot bốc xếp</h3>
+                <p>Hệ thống Robot bốc xếp bao/thùng lên Pallet tự động, thay thế sức lao động con người.</p>
+            </div>
+            <div class="card">
+                <h3>Nhà kho thông minh</h3>
+                <p>Giải pháp lưu trữ Kho Pallet Shuttle, kho tự động AS/RS giúp tối ưu không gian lưu trữ.</p>
+            </div>
+            <div class="card">
+                <h3>Robot tự hành AGV</h3>
+                <p>Robot kéo hàng tự động cho nhà máy sản xuất, linh hoạt và an toàn tuyệt đối.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-col">
+                <h4>Intech Group</h4>
+                <p>Công ty CP Tập Đoàn Kỹ Thuật & Công Nghiệp Việt Nam.</p>
+                <p>Email: info@intech-group.vn</p>
+                <p>Hotline: 0983 11 33 87</p>
+            </div>
+            <div class="footer-col">
+                <h4>Nhà Máy Hà Nội</h4>
+                <p>Lô 6, Cụm CN Lai Xá, Kim Chung, Hoài Đức, Hà Nội</p>
+            </div>
+            <div class="footer-col">
+                <h4>Nhà Máy Hồ Chí Minh</h4>
+                <p>Lô B, đường số 2A, KCN Đồng An, P. Bình Hòa, TP. Thuận An, Bình Dương</p>
+            </div>
+            <div class="footer-col">
+                <h4>Liên kết</h4>
+                <p><a href="#">Thông tin tập đoàn</a></p>
+                <p><a href="#">Tin tức & Sự kiện</a></p>
+                <p><a href="#">Tuyển dụng</a></p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Intech Group Clone. Thiết kế HTML/CSS Responsive.</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            var nav = document.getElementById("navLinks");
+            nav.classList.toggle("active");
+        }
+    </script>
+</body>
+</html>
